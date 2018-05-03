@@ -5,6 +5,11 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 
+KingPong/Library
+KingPong/ProjectSettings
+KingPong/Temp
+KingPong/.vs
+
 # Visual Studio 2015 cache directory
 /.vs/
 
