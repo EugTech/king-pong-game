@@ -10,6 +10,11 @@ KingPong/ProjectSettings
 KingPong/Temp
 KingPong/.vs
 
+king-pong-2d/Library
+king-pong-2d/ProjectSettings
+king-pong-2d/Temp
+king-pong-2d/.vs
+
 # Visual Studio 2015 cache directory
 /.vs/
 
