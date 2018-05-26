@@ -31,11 +31,24 @@ public class BallMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x > rightBound || transform.position.x < leftBound)
+        if (transform.position.x > rightBound)
         {
+			try
+			{
+				ScoreKeeper.Instance.ScoreME(2, 1);
+			}
+			catch { }
             Spawn();
-
         }
+		else if(transform.position.x < leftBound)
+		{
+			try
+			{
+				ScoreKeeper.Instance.ScoreME(1, 1);
+			}
+			catch { }
+			Spawn();
+		}
 
 		if(iTimer > 0)
 		{
