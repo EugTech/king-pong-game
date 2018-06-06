@@ -21,6 +21,9 @@ public class BallMovement : MonoBehaviour {
 	float interactionTimerL = 0.05f;
 	float iTimer = 0;
 
+
+    public ScoreController sc;
+
 	// Use this for initialization
 	void Start () {
         rb = gameObject.GetComponent<Rigidbody>();
