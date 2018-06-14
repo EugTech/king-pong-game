@@ -27,11 +27,15 @@ public class serialMicrobitInput : MonoBehaviour {
 
 	private Thread _t1;
 
+
+
 	SerialPort port;
 	void Start () {
 		//port = new SerialPort("COM6", 115200,Parity.None,8,StopBits.One);
 		//port = new SerialPort("COM5", 115200);
 		port = new SerialPort(COM, BAUD);
+		
+		//port = new SerialPort("COM20", 115200);
 		port.Open();
 
 		port.ReadTimeout = 1000;
@@ -65,6 +69,7 @@ public class serialMicrobitInput : MonoBehaviour {
 		while (true)
 		{
 			s = port.ReadLine();
+			Debug.Log(s);
 
 			//yield return s = ;
 			calculate();
@@ -75,6 +80,21 @@ public class serialMicrobitInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			port = new SerialPort(COM, BAUD);
+			port.Open();
+
+			port.ReadTimeout = 1000;
+
+			string[] sa = SerialPort.GetPortNames();
+
+			foreach(string s in sa)
+			{
+				Debug.Log(s);
+			}
+		}
+
 		//string s = null;
 		//s = port.ReadLine();
 		//try
@@ -115,6 +135,7 @@ public class serialMicrobitInput : MonoBehaviour {
 				int.TryParse(outputS2, out outputI2);
 
 				outputI2 *= -1;
+
 
 
 				Debug.Log(HLen.ToString() + "   " + s + " " + outputS + " " + outputS2 + " " + outputI.ToString() + " " + outputI2.ToString());

@@ -436,6 +436,7 @@ MonoBehaviour:
   leftBound: -12
   rightBound: 12
   RandoRot: 0
+  sc: {fileID: 0}
 --- !u!54 &185679196
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -801,6 +802,7 @@ MonoBehaviour:
   leftBound: -12
   rightBound: 12
   RandoRot: 1
+  sc: {fileID: 0}
 --- !u!1 &341431379
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,6 +970,7 @@ MonoBehaviour:
   leftBound: -12
   rightBound: 12
   RandoRot: 1
+  sc: {fileID: 0}
 --- !u!54 &516212024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1289,6 +1292,7 @@ MonoBehaviour:
   leftBound: -12
   rightBound: 12
   RandoRot: 1
+  sc: {fileID: 0}
 --- !u!54 &760572371
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6112,6 +6116,7 @@ MonoBehaviour:
   leftBound: -12
   rightBound: 12
   RandoRot: 1
+  sc: {fileID: 0}
 --- !u!54 &1014591517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6303,6 +6308,7 @@ MonoBehaviour:
   leftBound: -12
   rightBound: 12
   RandoRot: 1
+  sc: {fileID: 0}
 --- !u!54 &1143246961
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6993,7 +6999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b4990749ab7cf459f856527e8a6961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  COM: COM5
+  COM: COM10
   BAUD: 115200
   outputF: 0
   max: 1072
@@ -7567,6 +7573,7 @@ MonoBehaviour:
   leftBound: -12
   rightBound: 12
   RandoRot: 1
+  sc: {fileID: 0}
 --- !u!54 &2115276846
 Rigidbody:
   m_ObjectHideFlags: 0
