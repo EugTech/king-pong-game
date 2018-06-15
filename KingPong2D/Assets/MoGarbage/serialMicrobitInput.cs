@@ -20,7 +20,10 @@ public class serialMicrobitInput : MonoBehaviour {
 	int outputI = 0;
 	int outputI2 = 0;
 
+	int outputVI = 0;
+
 	public float outputF = 0;
+	public float outputV = 0;
 	public int max = 1072;
 
 	string s = null;
@@ -68,11 +71,16 @@ public class serialMicrobitInput : MonoBehaviour {
 	{
 		while (true)
 		{
-			s = port.ReadLine();
-			Debug.Log(s);
+			if (port.IsOpen)
+			{
+				string sL = port.ReadExisting();
+				s = port.ReadLine();
+				Debug.Log(s);
 
-			//yield return s = ;
-			calculate();
+				//yield return s = ;
+				//calculate();
+				calculate(sL);
+			}
 		}
 		
 	}
@@ -156,6 +164,53 @@ public class serialMicrobitInput : MonoBehaviour {
 			}
 
 			outputF = (float)outputI2 / (float)max;
+
+		}
+	}
+	void calculate( string inp)
+	{
+		if (inp != null)
+		{
+			Debug.Log(inp);
+
+		//	if (inp.Contains("-"))
+		//	{
+
+		//		inp = inp.Remove(inp.IndexOf("-"), 1);
+
+		//		if (inp.Contains("-"))
+		//		{
+		//			s = inp.Remove(inp.IndexOf("-"), 1);
+		//		}
+
+		//		int.TryParse(inp, out outputI);
+		//		outputS = outputI.ToString();
+		//		int HLen = outputS.Length / 2;
+		//		outputS2 = outputS.Substring(0, HLen);
+		//		int.TryParse(outputS2, out outputI2);
+
+		//		outputI2 *= -1;
+
+
+
+		//		Debug.Log(HLen.ToString() + "   " + inp + " " + outputS + " " + outputS2 + " " + outputI.ToString() + " " + outputI2.ToString());
+		//	}
+		//	else
+		//	{
+		//		//Debug.Log(inp);
+		//		//int HLen = inp.Length / 2;
+		//		//outputS = inp.Substring(HLen - 1, HLen);
+		//		int.TryParse(inp, out outputI);
+		//		outputS = outputI.ToString();
+		//		int HLen = outputS.Length / 2;
+		//		outputS2 = outputS.Substring(0, HLen);
+		//		int.TryParse(outputS2, out outputI2);
+
+
+		//		Debug.Log(HLen.ToString() + "   " + inp + " " + outputS + " " + outputS2 + " " + outputI.ToString() + " " + outputI2.ToString());
+		//	}
+
+		//	outputF = (float)outputI2 / (float)max;
 
 		}
 	}

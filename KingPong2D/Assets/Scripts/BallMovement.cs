@@ -122,7 +122,7 @@ public class BallMovement : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log("Already Collided " + col.gameObject.name);
+			//Debug.Log("Already Collided " + col.gameObject.name);
 		}
 	}
 }
