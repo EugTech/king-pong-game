@@ -17,8 +17,8 @@ public class serialMicrobitInput : MonoBehaviour {
 	string outputS = "";
 	string outputS2 = "";
 
-	int outputI = 0;
-	int outputI2 = 0;
+	public int outputI = 0;
+	public int outputI2 = 0;
 
 	int outputVI = 0;
 
@@ -34,13 +34,14 @@ public class serialMicrobitInput : MonoBehaviour {
 
 	SerialPort port;
 	void Start () {
+		
 		//port = new SerialPort("COM6", 115200,Parity.None,8,StopBits.One);
 		//port = new SerialPort("COM5", 115200);
 		port = new SerialPort(COM, BAUD);
 		
 		//port = new SerialPort("COM20", 115200);
 		port.Open();
-
+		
 		port.ReadTimeout = 1000;
 
 		//port.Write("2");
@@ -71,15 +72,24 @@ public class serialMicrobitInput : MonoBehaviour {
 	{
 		while (true)
 		{
+			Debug.Log("beep");
 			if (port.IsOpen)
 			{
-				string sL = port.ReadExisting();
+				//string sL = port.ReadExisting();
+
 				s = port.ReadLine();
 				Debug.Log(s);
+				//Debug.Log(sL);
 
 				//yield return s = ;
 				//calculate();
-				calculate(sL);
+				calculate(s);
+
+				outputF = (float)outputI / (float)max;
+			}
+			else
+			{
+				Debug.Log("portIsClosed?");
 			}
 		}
 		
@@ -94,7 +104,7 @@ public class serialMicrobitInput : MonoBehaviour {
 			port.Open();
 
 			port.ReadTimeout = 1000;
-
+			Debug.Log("try connect");
 			string[] sa = SerialPort.GetPortNames();
 
 			foreach(string s in sa)
@@ -167,51 +177,67 @@ public class serialMicrobitInput : MonoBehaviour {
 
 		}
 	}
-	void calculate( string inp)
+	void calculate( System.String inp)
 	{
 		if (inp != null)
 		{
 			Debug.Log(inp);
 
+			if(inp.Contains("(") && inp.Contains(")"))
+			{
+				System.Int32 openI = inp.IndexOf("(");
+				System.Int32 Mid = inp.IndexOf(" ");
+				System.Int32 closeI = inp.IndexOf(")");
+
+				System.String PosS = inp.Substring(openI + 1, Mid - openI - 1);
+				System.String VelS = inp.Substring(Mid + 1, closeI - Mid - 1);
+
+				System.Int32.TryParse(PosS, out outputI);
+				System.Int32.TryParse(VelS, out outputI2);
+
+
+			}
+
 		//	if (inp.Contains("-"))
 		//	{
 
-		//		inp = inp.Remove(inp.IndexOf("-"), 1);
+				//		inp = inp.Remove(inp.IndexOf("-"), 1);
 
-		//		if (inp.Contains("-"))
-		//		{
-		//			s = inp.Remove(inp.IndexOf("-"), 1);
-		//		}
+				//		if (inp.Contains("-"))
+				//		{
+				//			s = inp.Remove(inp.IndexOf("-"), 1);
+				//		}
 
-		//		int.TryParse(inp, out outputI);
-		//		outputS = outputI.ToString();
-		//		int HLen = outputS.Length / 2;
-		//		outputS2 = outputS.Substring(0, HLen);
-		//		int.TryParse(outputS2, out outputI2);
+				//		int.TryParse(inp, out outputI);
+				//		outputS = outputI.ToString();
+				//		int HLen = outputS.Length / 2;
+				//		outputS2 = outputS.Substring(0, HLen);
+				//		int.TryParse(outputS2, out outputI2);
 
-		//		outputI2 *= -1;
-
-
-
-		//		Debug.Log(HLen.ToString() + "   " + inp + " " + outputS + " " + outputS2 + " " + outputI.ToString() + " " + outputI2.ToString());
-		//	}
-		//	else
-		//	{
-		//		//Debug.Log(inp);
-		//		//int HLen = inp.Length / 2;
-		//		//outputS = inp.Substring(HLen - 1, HLen);
-		//		int.TryParse(inp, out outputI);
-		//		outputS = outputI.ToString();
-		//		int HLen = outputS.Length / 2;
-		//		outputS2 = outputS.Substring(0, HLen);
-		//		int.TryParse(outputS2, out outputI2);
+				//		outputI2 *= -1;
 
 
-		//		Debug.Log(HLen.ToString() + "   " + inp + " " + outputS + " " + outputS2 + " " + outputI.ToString() + " " + outputI2.ToString());
-		//	}
 
-		//	outputF = (float)outputI2 / (float)max;
+				//		Debug.Log(HLen.ToString() + "   " + inp + " " + outputS + " " + outputS2 + " " + outputI.ToString() + " " + outputI2.ToString());
+				//	}
+				//	else
+				//	{
+				//		//Debug.Log(inp);
+				//		//int HLen = inp.Length / 2;
+				//		//outputS = inp.Substring(HLen - 1, HLen);
+				//		int.TryParse(inp, out outputI);
+				//		outputS = outputI.ToString();
+				//		int HLen = outputS.Length / 2;
+				//		outputS2 = outputS.Substring(0, HLen);
+				//		int.TryParse(outputS2, out outputI2);
+
+
+				//		Debug.Log(HLen.ToString() + "   " + inp + " " + outputS + " " + outputS2 + " " + outputI.ToString() + " " + outputI2.ToString());
+				//	}
+
+				//	outputF = (float)outputI2 / (float)max;
 
 		}
+		Debug.Log(inp);
 	}
 }

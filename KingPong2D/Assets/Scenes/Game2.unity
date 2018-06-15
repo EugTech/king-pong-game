@@ -6999,9 +6999,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b4990749ab7cf459f856527e8a6961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  COM: COM10
+  COM: COM1
   BAUD: 115200
+  outputI: 0
+  outputI2: 0
   outputF: 0
+  outputV: 0
   max: 1072
 --- !u!4 &1708697896 stripped
 Transform:

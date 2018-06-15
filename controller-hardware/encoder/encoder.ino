@@ -41,9 +41,11 @@ void setup() {
 void loop() {
   delay(20);
   //Serial.println(counter);
+  Serial.print("(");
   Serial.print(counter);
   Serial.print(" ");
-  Serial.println(unclampedcounter - counter2);
+  Serial.print(unclampedcounter - counter2);
+  Serial.println(")");
   counter2 = unclampedcounter;  
 }
 
