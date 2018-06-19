@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = Camera.main.GetComponent<AudioSource>();
-        //BallMovement.ballHit += PlayOnce();
+        BallMovement.ballHit += PlayOnce();
             }
 	
 	// Update is called once per frame
