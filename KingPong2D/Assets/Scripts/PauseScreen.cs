@@ -42,12 +42,17 @@ public class PauseScreen : MonoBehaviour {
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
+
     public void Leaderboard()
     {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LeaderBoard");
     }
     public void StartMenu()
     {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Start");
     }
 

@@ -6,37 +6,77 @@ public class GifPlayerMesh : GifPlayerInterface
 {
     private MeshRenderer meshy;
     public GifData _g;
-
+    Coroutine lastCoroutine;
     // Use this for initialization
     void Awake()
     {
         meshy = GetComponent<MeshRenderer>();
     }
-
-    public override void Initialize(GifData gif)
+    /*
+    public Coroutine Init(GifData gif)
     {
-        playing = true;
-        StartCoroutine(play(gif));
+       Coroutine lc;
+       playing = true;
+       lc= StartCoroutine(play(gif));
+       return lc;
     }
+  
+
+
     private void Start()
     {
-        Initialize(_g);
+         Init(_g);   
     }
 
     public void ChangeGif(GifData gd) {
         playing = false;
-        StopCoroutine(play(gd));
-        Initialize(gd);
+        StopCoroutine(lastCoroutine);
+        lastCoroutine = Init(gd);
+    }
+      */
+
+    public override void Initialize(GifData gif)
+
+    {
+
+        playing = true;
+
+        StartCoroutine(Play(gif));
+
     }
 
-    IEnumerator play(GifData gif)
+    private void Start()
+
     {
+
+        Initialize(_g);
+
+    }
+
+
+
+    public void ChangeGif(GifData gd)
+    {
+
+        playing = false;
+
+        //StopCoroutine(play(_g));
+
+        Initialize(gd);
+
+    }
+
+
+
+    IEnumerator Play(GifData gif)
+    {
+        _g = gif;
         while (playing)
         {
-            for (int j = 0; j < gif.frames.Length; j++)
+            for (int j = 0; j < _g.frames.Length; j++)
             {
-                meshy.material.mainTexture = gif.frames[j];
-                yield return new WaitForSeconds(gif.delay);
+                meshy.material.mainTexture = _g.frames[j];
+                yield return new WaitForSeconds(_g.delay);
             }
         }
         playing = false;
