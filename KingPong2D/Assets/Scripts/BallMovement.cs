@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour {
@@ -21,6 +22,16 @@ public class BallMovement : MonoBehaviour {
 	float interactionTimerL = 0.05f;
 	float iTimer = 0;
 
+    public Action<int> OnBallHit;
+
+    public static Action<int> ballHit;
+
+
+
+    public Action<int> OnScore;
+
+    public static Action<int> score;
+
 
     public ScoreController sc;
 
@@ -41,6 +52,14 @@ public class BallMovement : MonoBehaviour {
 				ScoreKeeper.Instance.ScoreME(2, 1);
 			}
 			catch { }
+            try
+            {
+                score(1);
+
+                sc.UpdateScore(transform.position.x);
+
+            }
+            catch { }
             Spawn();
         }
 		else if(transform.position.x < leftBound)
@@ -50,6 +69,14 @@ public class BallMovement : MonoBehaviour {
 				ScoreKeeper.Instance.ScoreME(1, 1);
 			}
 			catch { }
+            try
+            {
+                score(0);
+
+                sc.UpdateScore(transform.position.x);
+
+            }
+            catch { }
 			Spawn();
 		}
 
@@ -72,9 +99,9 @@ public class BallMovement : MonoBehaviour {
 		}
 	}
 
-	void Spawn() {
-        transform.position = Vector3.zero + Vector3.up * Random.Range(-spawnVariance, spawnVariance) ;
-        dir = Random.insideUnitCircle;
+	public void Spawn() {
+        transform.position = Vector3.zero + Vector3.up *UnityEngine.Random.Range(-spawnVariance, spawnVariance) ;
+        dir = UnityEngine.Random.insideUnitCircle;
         dirV3 = new Vector3(dir.x, dir.y);
         rb.velocity = dirV3 * speed;
     }
@@ -96,8 +123,40 @@ public class BallMovement : MonoBehaviour {
 				//speed = (1f / mag) * 5;
 
 				rb.velocity = (-angle + reflection + rb.velocity.magnitude * col.contacts[0].normal * -1f) * speed;
-			}
-			else
+                float myYpos = transform.position.y;
+
+                float paddleYpos = paddle.y;
+
+                int higherLower = 0;
+
+                if (paddleYpos > (myYpos + .5f))
+
+                {
+
+                    //ball is lower
+
+                    higherLower = 1;
+
+                    print(higherLower);
+
+                }
+
+                else if (paddleYpos < (myYpos - .05f))
+
+                {
+
+                    //ball is higher
+
+                    higherLower = 2;
+
+                }
+
+                print("Paddle ypos: " + paddle.y + " Ball ypos : " + myYpos);
+
+                ballHit(higherLower);
+
+            }
+            else
 			{
 				if (rb.velocity.x > 0)
 				{
@@ -117,7 +176,7 @@ public class BallMovement : MonoBehaviour {
 			if (RandoRot)
 			{
 				rb.maxAngularVelocity = 45;
-				rb.angularVelocity = Random.onUnitSphere * Random.Range(-45, 45);
+				rb.angularVelocity = UnityEngine.Random.onUnitSphere * UnityEngine.Random.Range(-45, 45);
 			}
 		}
 		else
