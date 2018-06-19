@@ -47,7 +47,7 @@ public class ScoreController : MonoBehaviour {
     }
 
     public void UpdateScore(float xpos){
-        if (xpos > 0)
+        if (xpos < 0)
         {
             playerScores[1]++;
             scoreText[1].text = playerScores[1].ToString();

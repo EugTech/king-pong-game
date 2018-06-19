@@ -29,13 +29,15 @@ public class RoundManager : MonoBehaviour
 
     public BallMovement bm;
 
+    public TextMesh winScreen;
+
 
 
     // Use this for initialization
 
     void Start()
     {
-
+        winScreen.text = "";
 
 
     }
@@ -47,7 +49,9 @@ public class RoundManager : MonoBehaviour
     void Update()
     {
 
-
+        if (Input.GetKeyDown(KeyCode.Backspace)) {
+            StartCoroutine(pauseForNewPlayers());
+        }
 
     }
 
@@ -56,33 +60,29 @@ public class RoundManager : MonoBehaviour
     public void gameOver(int winningPlayer, string winningPlayerName, int losingPlayer, string losingPlayerName)
     {
 
-        print("Congrats " + winningPlayerName + "! You won with " + winningPlayer + " points! /n Don't Worry " + losingPlayer + " you'll get them next time!");
+            winScreen.text = "Congrats " + winningPlayerName + "! You won with " + winningPlayer + " points! /n Don't Worry " + losingPlayer + " you'll get them next time!";
 
-        if (++rounds > MaxNumOfRounds)
-
-        {
-
-            //do a thing
-
-
-
-            rounds = 0;
-
-        }
-
-        else
-        {
-
+            StartCoroutine(pauseForNewPlayers());
             sc.ResetScore();
 
             tm.StartTimer();
 
             bm.Spawn();
+        winScreen.text = "";
+
+    }
+
+    public IEnumerator pauseForNewPlayers() {
+        Time.timeScale = 0.0001f;
+        yield return StartCoroutine(waitForInput(KeyCode.Space));
+        Time.timeScale = 1;
 
 
-
+    }
+    IEnumerator waitForInput(KeyCode key) {
+        while (!Input.GetKeyDown(key)) {
+            yield return null;
         }
-
     }
 
 }
