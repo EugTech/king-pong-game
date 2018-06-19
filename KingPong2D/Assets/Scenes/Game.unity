@@ -136,12 +136,40 @@ Transform:
   m_GameObject: {fileID: 45966584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 1, z: 1}
   m_Children:
   - {fileID: 1261985905}
   - {fileID: 1772893883}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &130890643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 130890644}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &130890644
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 130890643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.56177, y: 4.4889565, z: 0.029885791}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &138652491
 GameObject:
@@ -236,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playing: 0
-  gif: {fileID: 11400000, guid: 78d09f2cadd98934c8bdbcaea4e485ac, type: 2}
+  _g: {fileID: 11400000, guid: 2bc99970bcd321b40a7d3083880224da, type: 2}
 --- !u!64 &196425807
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -506,7 +534,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 240828644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 4, z: 1.5548716}
+  m_LocalPosition: {x: 2, y: 4, z: -2}
   m_LocalScale: {x: 0.03363302, y: 0.033633076, z: 0.033633076}
   m_Children: []
   m_Father: {fileID: 0}
@@ -667,7 +695,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -736,11 +764,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runtimeConverter: {fileID: 1325291957126652, guid: 65737be6685e496478e866040b83a831,
     type: 2}
-  sourcePath: Assets/Gifs/David.gif
-  savePath: Assets/Gifs
-  saveName: david
+  sourcePath: Assets/SourceGifs/spiralSpikes.gif
+  savePath: Assets/Gifs/GameGifs
+  saveName: SpikeStacks
   gifPlayer: {fileID: 196425806}
-  hasAlpha: 1
+  hasAlpha: 0
   quality: 80
   done: {fileID: 0}
 --- !u!4 &687522880
@@ -787,7 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playing: 0
-  gif: {fileID: 11400000, guid: 8a89baa0ee921854d8dca27dd816d2db, type: 2}
+  _g: {fileID: 11400000, guid: 2bc99970bcd321b40a7d3083880224da, type: 2}
 --- !u!64 &874736973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -958,10 +986,18 @@ MonoBehaviour:
   boards:
   - {fileID: 196425806}
   - {fileID: 874736972}
-  gifs:
-  - {fileID: 11400000, guid: 78d09f2cadd98934c8bdbcaea4e485ac, type: 2}
-  - {fileID: 11400000, guid: 8a89baa0ee921854d8dca27dd816d2db, type: 2}
-  - {fileID: 11400000, guid: e76872be3d5d34742b120277b677ba9c, type: 2}
+  easyGifs:
+  - {fileID: 11400000, guid: 4403c6f82a6b8a145bef1aa626ca9c65, type: 2}
+  - {fileID: 11400000, guid: b91f051a61a2d7144a4bb1f0dd7786fa, type: 2}
+  - {fileID: 11400000, guid: b029a784bc330074dbd8a9a0cc565ca2, type: 2}
+  mediumGifs:
+  - {fileID: 11400000, guid: 9f94ae4d3100b0c4db36d00077942933, type: 2}
+  - {fileID: 11400000, guid: f17de5e68a048dd44b2daddd84665f36, type: 2}
+  - {fileID: 11400000, guid: bb5598d400efdf745a38f56599bf12cf, type: 2}
+  hardGifs:
+  - {fileID: 11400000, guid: 10ddd398f40f8ec40988e927160ffa3c, type: 2}
+  - {fileID: 11400000, guid: f1c591a80e80b7343a321a93423baa02, type: 2}
+  - {fileID: 11400000, guid: 967313fbd387c1d439b24acfb1b60570, type: 2}
   numOfGifs: 3
   scoreText:
   - {fileID: 1672475312}
@@ -973,7 +1009,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1159284153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2111072, y: -0.90307385, z: 0.22851562}
+  m_LocalPosition: {x: 0.2111072, y: -0.90307385, z: -1.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1013,6 +1049,7 @@ MonoBehaviour:
   isPlayerOne: 1
   yMax: 4
   yMin: -4
+  Microbit: {fileID: 0}
 --- !u!65 &1224113925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1377,6 +1414,7 @@ MonoBehaviour:
   isPlayerOne: 0
   yMax: 4
   yMin: -4
+  Microbit: {fileID: 0}
 --- !u!65 &1637648352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1524,7 +1562,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1672475311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 4, z: 1.5548716}
+  m_LocalPosition: {x: -2.5, y: 4, z: -2}
   m_LocalScale: {x: 0.03363302, y: 0.033633076, z: 0.033633076}
   m_Children: []
   m_Father: {fileID: 0}
