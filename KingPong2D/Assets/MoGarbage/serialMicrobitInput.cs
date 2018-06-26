@@ -95,6 +95,11 @@ public class serialMicrobitInput : MonoBehaviour {
 		
 	}
 
+	private void OnApplicationQuit()
+	{
+		_t1.Abort();
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
